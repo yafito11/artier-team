@@ -1,0 +1,130 @@
+/* Agent Card Component */
+.agent-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.agent-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.agent-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.agent-card-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-md);
+  flex-shrink: 0;
+}
+
+.agent-card-avatar.standalone {
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.agent-card-avatar.team-lead {
+  background: var(--color-success-muted);
+  color: var(--color-success);
+}
+
+.agent-card-avatar.sub-agent {
+  background: var(--color-bg-muted);
+  color: var(--color-fg-secondary);
+}
+
+.agent-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.agent-card-name {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg-primary);
+  margin-bottom: var(--space-1);
+}
+
+.agent-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.agent-card-actions {
+  display: flex;
+  gap: var(--space-1);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.agent-card:hover .agent-card-actions {
+  opacity: 1;
+}
+
+.agent-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.agent-card-model {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-muted);
+  background: var(--color-bg-overlay);
+  border-radius: var(--radius-full);
+}
+
+.agent-card-type {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+}
+
+.agent-card-type.standalone {
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.agent-card-type.team-lead {
+  background: var(--color-success-muted);
+  color: var(--color-success);
+}
+
+.agent-card-type.sub-agent {
+  background: var(--color-bg-muted);
+  color: var(--color-fg-muted);
+}
+
+/* Agent grid */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}

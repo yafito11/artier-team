@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artier Team — Tool Execution Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="../components/button.css">
+  <link rel="stylesheet" href="../components/tool-execution.css">
+  <link rel="stylesheet" href="../components/message.css">
+  <link rel="stylesheet" href="../components/code-block.css">
+  <style>
+    .demo-section { max-width:700px; margin:0 auto; padding:var(--space-8) var(--space-6); }
+    .demo-section h2 { font-size:var(--font-size-xl); margin-bottom:var(--space-2); }
+    .demo-section p { color:var(--color-fg-muted); margin-bottom:var(--space-6); }
+    .demo-group { margin-bottom:var(--space-8); }
+    .demo-label { font-size:var(--font-size-xs); font-weight:var(--font-weight-semibold); color:var(--color-fg-subtle); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:var(--space-3); }
+  </style>
+</head>
+<body>
+  <div class="demo-section">
+    <h2>Tool Execution Demo</h2>
+    <p>Various states of tool/skill execution cards as they appear in chat.</p>
+
+    <!-- Running state -->
+    <div class="demo-group">
+      <div class="demo-label">Running State</div>
+      <div class="tool-card expanded">
+        <div class="tool-card-header">
+          <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span class="tool-card-name">Run Tests</span>
+          <span class="tool-status running"><span class="tool-status-dot"></span> Running</span>
+          <svg class="tool-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="tool-card-body">
+          <div class="tool-card-section">
+            <div class="tool-card-label">Command</div>
+            <div class="tool-card-code">npm run test -- --filter=validate-email</div>
+          </div>
+          <div class="tool-card-section">
+            <div class="tool-card-label">Output</div>
+            <div class="tool-card-code">Running tests...
+PASS  src/utils/validate-email.test.ts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <div class="demo-group">
+      <div class="demo-label">Success State</div>
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span class="tool-card-name">Run Tests</span>
+          <span class="tool-status success"><span class="tool-status-dot"></span> Success</span>
+          <svg class="tool-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div class="demo-group">
+      <div class="demo-label">Error State</div>
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span class="tool-card-name">Deploy Preview</span>
+          <span class="tool-status error"><span class="tool-status-dot"></span> Error</span>
+          <svg class="tool-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation card -->
+    <div class="demo-group">
+      <div class="demo-label">Confirmation / Approval Required</div>
+      <div class="confirmation-card">
+        <div class="confirmation-card-header">
+          <svg class="confirmation-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="confirmation-card-title">Approval Required</span>
+        </div>
+        <div class="confirmation-card-message">
+          The skill "Deploy Preview" wants to execute the following command in the sandbox:
+        </div>
+        <div class="tool-card-code" style="margin-bottom:var(--space-3);">npm run deploy -- --env=preview</div>
+        <div class="confirmation-card-actions">
+          <button class="btn btn-secondary">Deny</button>
+          <button class="btn btn-primary">Approve</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code block demo -->
+    <div class="demo-group">
+      <div class="demo-label">Code Block (in message)</div>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-filename">validate-email.ts</span>
+          <button class="code-block-copy">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy
+          </button>
+        </div>
+        <div class="code-block-body">
+          <pre><code>function validateEmail(email: string): boolean {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Streaming indicator -->
+    <div class="demo-group">
+      <div class="demo-label">Streaming Indicator</div>
+      <div class="message">
+        <div class="message-avatar assistant">A</div>
+        <div class="message-body">
+          <div class="streaming-indicator">
+            <span class="streaming-dot"></span>
+            <span class="streaming-dot"></span>
+            <span class="streaming-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+

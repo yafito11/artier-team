@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artier Team — Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="../components/button.css">
+  <link rel="stylesheet" href="../components/sidebar.css">
+  <link rel="stylesheet" href="../components/composer.css">
+  <link rel="stylesheet" href="../components/conversation.css">
+  <link rel="stylesheet" href="../components/message.css">
+  <link rel="stylesheet" href="../components/tool-execution.css">
+  <link rel="stylesheet" href="../components/code-block.css">
+  <link rel="stylesheet" href="../components/agent-card.css">
+  <link rel="stylesheet" href="../components/form.css">
+  <link rel="stylesheet" href="../components/modal.css">
+  <link rel="stylesheet" href="../components/badge.css">
+  <style>
+    .sg-page { padding:var(--space-8) var(--space-6); max-width:900px; margin:0 auto; }
+    .sg-title { font-size:var(--font-size-3xl); font-weight:var(--font-weight-bold); margin-bottom:var(--space-2); }
+    .sg-subtitle { color:var(--color-fg-muted); margin-bottom:var(--space-8); }
+    .sg-section { margin-bottom:var(--space-10); }
+    .sg-section-title { font-size:var(--font-size-xl); font-weight:var(--font-weight-semibold); margin-bottom:var(--space-2); color:var(--color-fg-primary); border-bottom:1px solid var(--color-border); padding-bottom:var(--space-2); }
+    .sg-section-desc { font-size:var(--font-size-sm); color:var(--color-fg-muted); margin-bottom:var(--space-4); }
+    .sg-row { display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:center; margin-bottom:var(--space-4); }
+    .sg-label { font-size:var(--font-size-xs); font-weight:var(--font-weight-semibold); color:var(--color-fg-subtle); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:var(--space-2); }
+    .sg-block { padding:var(--space-4); background:var(--color-bg-elevated); border:1px solid var(--color-border); border-radius:var(--radius-lg); margin-bottom:var(--space-4); }
+  </style>
+</head>
+<body>
+  <div class="sg-page">
+    <h1 class="sg-title">Artier Team Style Guide</h1>
+    <p class="sg-subtitle">Visual catalog of all design tokens, components, and UI patterns.</p>
+
+    <!-- COLORS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Colors</h2>
+      <div class="sg-label">Background</div>
+      <div class="sg-row">
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-bg-base);border:1px solid var(--color-border);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-bg-elevated);border:1px solid var(--color-border);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-bg-overlay);border:1px solid var(--color-border);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-bg-surface);border:1px solid var(--color-border);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-bg-muted);border:1px solid var(--color-border);"></div>
+      </div>
+      <div class="sg-label">Foreground</div>
+      <div class="sg-row">
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-fg-primary);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-fg-secondary);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-fg-muted);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-fg-subtle);"></div>
+      </div>
+      <div class="sg-label">Semantic</div>
+      <div class="sg-row">
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-accent);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-success);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-warning);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-danger);"></div>
+        <div style="width:64px;height:64px;border-radius:var(--radius-md);background:var(--color-info);"></div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Typography</h2>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-3xl);">Heading 1 (3xl)</span></div>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-2xl);">Heading 2 (2xl)</span></div>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-xl);">Heading 3 (xl)</span></div>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-lg);">Heading 4 (lg)</span></div>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-md);">Body (md)</span></div>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-sm);">Small (sm)</span></div>
+      <div style="margin-bottom:var(--space-3);"><span style="font-size:var(--font-size-xs);">Extra Small (xs)</span></div>
+      <div style="margin-bottom:var(--space-3);"><code style="font-family:var(--font-mono);">Monospace text</code></div>
+    </div>
+
+    <!-- SPACING -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Spacing Scale</h2>
+      <div class="sg-row">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-1);height:var(--space-1);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">1</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-2);height:var(--space-2);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">2</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-3);height:var(--space-3);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">3</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-4);height:var(--space-4);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">4</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-6);height:var(--space-6);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">6</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-8);height:var(--space-8);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">8</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-10);height:var(--space-10);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">10</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-12);height:var(--space-12);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">12</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:var(--space-16);height:var(--space-16);background:var(--color-accent);border-radius:2px;"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">16</span></div>
+      </div>
+    </div>
+
+    <!-- BORDER RADIUS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Border Radius</h2>
+      <div class="sg-row">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:48px;height:48px;background:var(--color-bg-muted);border:1px solid var(--color-border);border-radius:var(--radius-sm);"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">sm</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:48px;height:48px;background:var(--color-bg-muted);border:1px solid var(--color-border);border-radius:var(--radius-md);"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">md</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:48px;height:48px;background:var(--color-bg-muted);border:1px solid var(--color-border);border-radius:var(--radius-lg);"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">lg</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:48px;height:48px;background:var(--color-bg-muted);border:1px solid var(--color-border);border-radius:var(--radius-xl);"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">xl</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="width:48px;height:48px;background:var(--color-bg-muted);border:1px solid var(--color-border);border-radius:var(--radius-full);"></div><span style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">full</span></div>
+      </div>
+    </div>
+
+    <!-- SHADOWS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Shadows</h2>
+      <div class="sg-row">
+        <div style="width:80px;height:80px;background:var(--color-bg-elevated);border-radius:var(--radius-md);box-shadow:var(--shadow-xs);display:flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);color:var(--color-fg-muted);">xs</div>
+        <div style="width:80px;height:80px;background:var(--color-bg-elevated);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);color:var(--color-fg-muted);">sm</div>
+        <div style="width:80px;height:80px;background:var(--color-bg-elevated);border-radius:var(--radius-md);box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);color:var(--color-fg-muted);">md</div>
+        <div style="width:80px;height:80px;background:var(--color-bg-elevated);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);color:var(--color-fg-muted);">lg</div>
+        <div style="width:80px;height:80px;background:var(--color-bg-elevated);border-radius:var(--radius-md);box-shadow:var(--shadow-xl);display:flex;align-items:center;justify-content:center;font-size:var(--font-size-xs);color:var(--color-fg-muted);">xl</div>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Buttons</h2>
+      <div class="sg-label">Variants</div>
+      <div class="sg-row">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-danger">Danger</button>
+      </div>
+      <div class="sg-label">Sizes</div>
+      <div class="sg-row">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+      </div>
+      <div class="sg-label">Icon Buttons</div>
+      <div class="sg-row">
+        <button class="btn-icon sm btn-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <button class="btn-icon btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <button class="btn-icon lg btn-ghost"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+      <div class="sg-label">Disabled</div>
+      <div class="sg-row">
+        <button class="btn btn-primary" disabled>Disabled</button>
+        <button class="btn-send" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+
+    <!-- BADGES -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Badges</h2>
+      <div class="sg-row">
+        <span class="badge badge-default">Default</span>
+        <span class="badge badge-accent">Accent</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-danger">Danger</span>
+        <span class="badge badge-info">Info</span>
+      </div>
+      <div class="sg-row">
+        <span class="badge badge-success"><span class="badge-dot"></span> Active</span>
+        <span class="badge badge-default"><span class="badge-dot"></span> Paused</span>
+        <span class="badge badge-danger"><span class="badge-dot"></span> Error</span>
+      </div>
+    </div>
+
+    <!-- FORMS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Form Elements</h2>
+      <div class="sg-block">
+        <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:400px;">
+          <div class="form-group">
+            <label class="form-label">Text Input</label>
+            <input type="text" class="form-input" placeholder="Enter text...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select</label>
+            <select class="form-input form-select">
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Textarea</label>
+            <textarea class="form-input form-textarea" rows="3" placeholder="Enter instructions..."></textarea>
+          </div>
+          <div class="toggle">
+            <input type="checkbox" id="toggle1" checked>
+            <div class="toggle-track"><div class="toggle-thumb"></div></div>
+            <span class="toggle-label">Enable feature</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Checklist</h2>
+      <div class="sg-block" style="max-width:400px;">
+        <div class="checklist-item checked">
+          <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span class="checklist-label">gpt-4o</span>
+        </div>
+        <div class="checklist-item checked">
+          <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span class="checklist-label">gpt-4o-mini</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span class="checklist-label">claude-sonnet</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RADIO CARDS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Radio Cards</h2>
+      <div class="radio-card-group">
+        <div class="radio-card selected">
+          <div class="radio-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+          <div class="radio-card-title">Manual</div>
+          <div class="radio-card-desc">Fill in yourself</div>
+        </div>
+        <div class="radio-card">
+          <div class="radio-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="radio-card-title">AI Builder</div>
+          <div class="radio-card-desc">Generate via prompt</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL CARD -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Tool Execution Card</h2>
+      <div class="sg-block">
+        <div class="tool-card expanded">
+          <div class="tool-card-header">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span class="tool-card-name">Run Tests</span>
+            <span class="tool-status success"><span class="tool-status-dot"></span> Success</span>
+            <svg class="tool-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tool-card-body">
+            <div class="tool-card-section">
+              <div class="tool-card-label">Command</div>
+              <div class="tool-card-code">npm run test</div>
+            </div>
+            <div class="tool-card-section">
+              <div class="tool-card-label">Output</div>
+              <div class="tool-card-code">3 tests passed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION CARD -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Confirmation Card</h2>
+      <div class="confirmation-card">
+        <div class="confirmation-card-header">
+          <svg class="confirmation-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="confirmation-card-title">Approve CLI Execution?</span>
+        </div>
+        <div class="confirmation-card-message">This skill will execute a command in the sandbox.</div>
+        <div class="confirmation-card-actions">
+          <button class="btn btn-secondary">Deny</button>
+          <button class="btn btn-primary">Approve</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CODE BLOCK -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Code Block</h2>
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-filename">example.ts</span>
+          <button class="code-block-copy">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy
+          </button>
+        </div>
+        <div class="code-block-body">
+          <pre><code>const greeting = "Hello, Artier Team!";
+console.log(greeting);</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Messages</h2>
+      <div class="message" style="margin-bottom:var(--space-4);">
+        <div class="message-avatar user">Y</div>
+        <div class="message-body">
+          <div class="message-header"><span class="message-author">You</span><span class="message-timestamp">10:32 AM</span></div>
+          <div class="message-content user">Hello, how are you?</div>
+          <div class="message-actions">
+            <button class="message-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="message">
+        <div class="message-avatar assistant">A</div>
+        <div class="message-body">
+          <div class="message-header"><span class="message-author">Assistant</span><span class="message-timestamp">10:32 AM</span></div>
+          <div class="message-content">I'm doing well! How can I help you today?</div>
+          <div class="message-actions">
+            <button class="message-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+            <button class="message-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
+            <button class="message-action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STREAMING -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Streaming Indicator</h2>
+      <div class="message">
+        <div class="message-avatar assistant">A</div>
+        <div class="message-body">
+          <div class="streaming-indicator">
+            <span class="streaming-dot"></span>
+            <span class="streaming-dot"></span>
+            <span class="streaming-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENT CARDS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Agent Cards</h2>
+      <div class="agent-grid">
+        <div class="agent-card">
+          <div class="agent-card-header">
+            <div class="agent-card-avatar standalone">C</div>
+            <div class="agent-card-info">
+              <div class="agent-card-name">Code Assistant</div>
+              <div class="agent-card-desc">Helps with coding tasks</div>
+            </div>
+          </div>
+          <div class="agent-card-footer">
+            <span class="agent-card-model">GPT-4o-mini</span>
+            <span class="agent-card-type standalone">Standalone</span>
+          </div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-card-header">
+            <div class="agent-card-avatar team-lead">L</div>
+            <div class="agent-card-info">
+              <div class="agent-card-name">Lead Developer</div>
+              <div class="agent-card-desc">Coordinates the team</div>
+            </div>
+          </div>
+          <div class="agent-card-footer">
+            <span class="agent-card-model">GPT-4o</span>
+            <span class="agent-card-type team-lead">Team Lead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUGGESTION CHIPS -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Suggestion Chips</h2>
+      <div class="conversation-suggestions">
+        <button class="suggestion-chip">Create a new agent</button>
+        <button class="suggestion-chip">Set up a provider</button>
+        <button class="suggestion-chip">Run a skill</button>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="sg-section">
+      <h2 class="sg-section-title">Toast Notification</h2>
+      <div class="toast-container" style="position:relative;">
+        <div class="toast success">
+          <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="toast-content">
+            <div class="toast-title">Agent Created</div>
+            <div class="toast-message">Code Assistant has been added successfully.</div>
+          </div>
+          <button class="toast-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

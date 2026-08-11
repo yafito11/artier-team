@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artier Team — Provider Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="../components/button.css">
+  <link rel="stylesheet" href="../components/sidebar.css">
+  <link rel="stylesheet" href="../components/form.css">
+  <link rel="stylesheet" href="../components/badge.css">
+  <style>
+    .page-header { display:flex; align-items:center; justify-content:space-between; padding:var(--space-4) var(--space-6); border-bottom:1px solid var(--color-border); flex-shrink:0; }
+    .page-content { flex:1; overflow-y:auto; padding:var(--space-6); max-width:640px; margin:0 auto; width:100%; }
+    .form-card { padding:var(--space-6); background:var(--color-bg-elevated); border:1px solid var(--color-border); border-radius:var(--radius-lg); margin-bottom:var(--space-4); }
+    .form-card-title { font-size:var(--font-size-md); font-weight:var(--font-weight-semibold); color:var(--color-fg-primary); margin-bottom:var(--space-4); display:flex; align-items:center; gap:var(--space-2); }
+    .provider-header { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-3) var(--space-4); background:var(--color-bg-overlay); border:1px solid var(--color-border); border-radius:var(--radius-md); margin-bottom:var(--space-4); }
+    .provider-logo { width:24px; height:24px; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; font-size:var(--font-size-xs); font-weight:var(--font-weight-bold); }
+    .model-grid { display:flex; flex-direction:column; gap:var(--space-2); }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')" title="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="sidebar-header">
+        <button class="btn btn-secondary w-full" style="justify-content: flex-start; gap: var(--space-2);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>New Chat or Task</span>
+        </button>
+      </div>
+      <div class="sidebar-search"><input type="text" placeholder="Search..."></div>
+      <nav class="sidebar-content">
+        <div class="sidebar-dropdown open">
+          <button class="sidebar-dropdown-trigger" onclick="this.parentElement.classList.toggle('open')">
+            <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="dropdown-label">Recent Chat</span><span class="recent-count">3</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sidebar-dropdown-content">
+            <button class="sidebar-dropdown-item active"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="item-label">Email validation regex</span><span class="item-time">2m</span></button>
+            <button class="sidebar-dropdown-item"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="item-label">Deploy to Oracle Cloud</span><span class="item-time">1h</span></button>
+          </div>
+        </div>
+        <div class="sidebar-dropdown">
+          <button class="sidebar-dropdown-trigger" onclick="this.parentElement.classList.toggle('open')">
+            <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span class="dropdown-label">Recent Task</span><span class="recent-count">1</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sidebar-dropdown-content">
+            <button class="sidebar-dropdown-item"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span class="item-label">Build provider adapter</span><span class="item-time">30m</span></button>
+          </div>
+        </div>
+        <div class="sidebar-section"><a href="agent-list.html" class="sidebar-nav-item"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="item-label">Agents</span><span class="item-count">5</span></a></div>
+        <div class="sidebar-section"><a href="agent-team-org.html" class="sidebar-nav-item"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="item-label">Agent Teams</span><span class="item-count">2</span></a></div>
+        <div class="sidebar-section"><a href="skill-list.html" class="sidebar-nav-item"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span class="item-label">Skills</span><span class="item-count">3</span></a></div>
+        <div class="sidebar-section"><a href="automation-list.html" class="sidebar-nav-item"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="item-label">Automations</span><span class="item-count">2</span></a></div>
+      </nav>
+      <div class="sidebar-mode-toggle"><button class="sidebar-mode-toggle-btn active">Chat</button><button class="sidebar-mode-toggle-btn">Task</button></div>
+      <div class="sidebar-footer">
+        <div class="user-avatar">Y</div><span class="user-name">Yafie</span>
+        <button class="btn-icon sm btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header">
+        <h2 style="font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);">Manage Providers</h2>
+        <button class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Provider
+        </button>
+      </div>
+
+      <div class="page-content">
+        <!-- Provider 1: OpenRouter -->
+        <div class="form-card">
+          <div class="provider-header">
+            <div class="provider-logo" style="background:var(--color-accent-muted);color:var(--color-accent);">OR</div>
+            <div style="flex:1;">
+              <div style="font-weight:var(--font-weight-semibold);color:var(--color-fg-primary);">OpenRouter</div>
+              <div style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">openai-compatible</div>
+            </div>
+            <span class="badge badge-success">Connected</span>
+            <button class="btn-icon sm btn-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Base URL</label>
+              <input type="text" class="form-input" value="https://openrouter.ai/api/v1" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">API Key</label>
+              <input type="password" class="form-input" value="sk-or-v1-xxxxxxxxxxxx">
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-4);">
+            <div class="form-card-title">
+              Auto-detected Models
+              <button class="btn btn-sm btn-secondary">Refresh</button>
+            </div>
+            <div class="model-grid">
+              <div class="checklist-item checked">
+                <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="checklist-label" style="flex:1;">openai/gpt-4o</span>
+                <span class="badge badge-default">Chat</span>
+              </div>
+              <div class="checklist-item checked">
+                <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="checklist-label" style="flex:1;">openai/gpt-4o-mini</span>
+                <span class="badge badge-default">Chat</span>
+              </div>
+              <div class="checklist-item checked">
+                <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="checklist-label" style="flex:1;">anthropic/claude-sonnet-4</span>
+                <span class="badge badge-default">Chat</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="checklist-label" style="flex:1;">meta-llama/llama-4-maverick</span>
+                <span class="badge badge-default">Chat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Provider 2: Anthropic -->
+        <div class="form-card">
+          <div class="provider-header">
+            <div class="provider-logo" style="background:var(--color-warning-muted);color:var(--color-warning);">A</div>
+            <div style="flex:1;">
+              <div style="font-weight:var(--font-weight-semibold);color:var(--color-fg-primary);">Anthropic API</div>
+              <div style="font-size:var(--font-size-xs);color:var(--color-fg-muted);">anthropic-compatible</div>
+            </div>
+            <span class="badge badge-success">Connected</span>
+            <button class="btn-icon sm btn-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Base URL</label>
+              <input type="text" class="form-input" value="https://api.anthropic.com" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">API Key</label>
+              <input type="password" class="form-input" value="sk-ant-xxxxxxxxxxxx">
+            </div>
+          </div>
+          <div style="margin-top:var(--space-4);">
+            <div class="form-card-title">Auto-detected Models</div>
+            <div class="model-grid">
+              <div class="checklist-item checked">
+                <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="checklist-label" style="flex:1;">claude-sonnet-4-20250514</span>
+                <span class="badge badge-default">Chat</span>
+              </div>
+              <div class="checklist-item checked">
+                <div class="checklist-checkbox"><svg class="checklist-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="checklist-label" style="flex:1;">claude-3-5-haiku-20241022</span>
+                <span class="badge badge-default">Chat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+

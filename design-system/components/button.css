@@ -1,0 +1,90 @@
+/* ============================================
+   Button Component
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary */
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+.btn-primary:hover { background: var(--color-accent-hover); }
+
+/* Secondary */
+.btn-secondary {
+  background: var(--color-bg-muted);
+  color: var(--color-fg-secondary);
+  border: 1px solid var(--color-border);
+}
+.btn-secondary:hover { background: var(--color-bg-hover); color: var(--color-fg-primary); }
+
+/* Ghost */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-fg-secondary);
+}
+.btn-ghost:hover { background: var(--color-bg-hover); color: var(--color-fg-primary); }
+
+/* Danger */
+.btn-danger {
+  background: var(--color-danger);
+  color: #ffffff;
+}
+.btn-danger:hover { background: #dc2626; }
+
+/* Icon only */
+.btn-icon {
+  padding: var(--space-2);
+  width: 32px;
+  height: 32px;
+}
+.btn-icon.sm {
+  padding: var(--space-1);
+  width: 24px;
+  height: 24px;
+}
+.btn-icon.lg {
+  padding: var(--space-3);
+  width: 40px;
+  height: 40px;
+}
+
+/* Sizes */
+.btn-sm { padding: var(--space-1) var(--space-2); font-size: var(--font-size-xs); }
+.btn-lg { padding: var(--space-3) var(--space-5); font-size: var(--font-size-md); }
+
+/* Send button specific */
+.btn-send {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+.btn-send:hover { background: var(--color-accent-hover); }
+.btn-send:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-send svg { width: 16px; height: 16px; }

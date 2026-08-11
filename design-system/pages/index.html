@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artier Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="../components/button.css">
+  <link rel="stylesheet" href="../components/sidebar.css">
+  <link rel="stylesheet" href="../components/composer.css">
+  <link rel="stylesheet" href="../components/conversation.css">
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- ==============================
+         SIDEBAR
+         ============================== -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Collapse Toggle -->
+      <button class="sidebar-toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')" title="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <!-- Header: New Chat or Task -->
+      <div class="sidebar-header">
+        <button class="btn btn-secondary w-full" style="justify-content: flex-start; gap: var(--space-2);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>New Chat or Task</span>
+        </button>
+      </div>
+
+      <!-- Search -->
+      <div class="sidebar-search">
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <!-- Sidebar Content -->
+      <nav class="sidebar-content">
+
+        <!-- Recent Chat (Dropdown) -->
+        <div class="sidebar-dropdown open">
+          <button class="sidebar-dropdown-trigger" onclick="this.parentElement.classList.toggle('open')">
+            <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="dropdown-label">Recent Chat</span>
+            <span class="recent-count">3</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sidebar-dropdown-content">
+            <button class="sidebar-dropdown-item active">
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span class="item-label">Email validation regex</span>
+              <span class="item-time">2m</span>
+            </button>
+            <button class="sidebar-dropdown-item">
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span class="item-label">Deploy to Oracle Cloud</span>
+              <span class="item-time">1h</span>
+            </button>
+            <button class="sidebar-dropdown-item">
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span class="item-label">Debug auth middleware</span>
+              <span class="item-time">3h</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent Task (Dropdown) -->
+        <div class="sidebar-dropdown">
+          <button class="sidebar-dropdown-trigger" onclick="this.parentElement.classList.toggle('open')">
+            <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span class="dropdown-label">Recent Task</span>
+            <span class="recent-count">1</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sidebar-dropdown-content">
+            <button class="sidebar-dropdown-item">
+              <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span class="item-label">Build provider adapter</span>
+              <span class="item-time">30m</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Agents (navigation → page) -->
+        <div class="sidebar-section">
+          <a href="agent-list.html" class="sidebar-nav-item">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="item-label">Agents</span>
+            <span class="item-count">5</span>
+          </a>
+        </div>
+
+        <!-- Agent Teams (navigation → page) -->
+        <div class="sidebar-section">
+          <a href="agent-team-org.html" class="sidebar-nav-item">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <span class="item-label">Agent Teams</span>
+            <span class="item-count">2</span>
+          </a>
+        </div>
+
+        <!-- Skills (navigation → page) -->
+        <div class="sidebar-section">
+          <a href="skill-list.html" class="sidebar-nav-item">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span class="item-label">Skills</span>
+            <span class="item-count">3</span>
+          </a>
+        </div>
+
+        <!-- Automations (navigation → page) -->
+        <div class="sidebar-section">
+          <a href="automation-list.html" class="sidebar-nav-item">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="item-label">Automations</span>
+            <span class="item-count">2</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <!-- Chat / Task Mode Toggle -->
+      <div class="sidebar-mode-toggle">
+        <button class="sidebar-mode-toggle-btn active">Chat</button>
+        <button class="sidebar-mode-toggle-btn">Task</button>
+      </div>
+
+      <!-- Footer -->
+      <div class="sidebar-footer">
+        <div class="user-avatar">Y</div>
+        <span class="user-name">Yafie</span>
+        <button class="btn-icon sm btn-ghost" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ==============================
+         MAIN CONTENT — Chatbot Mode (Empty State)
+         ============================== -->
+    <main class="main-content">
+
+      <!-- Conversation Area -->
+      <div class="conversation">
+        <div class="conversation-empty">
+          <div class="conversation-empty-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>What can I help with?</h3>
+          <p>Ask me anything, or pick a suggestion below to get started.</p>
+          <div class="conversation-suggestions">
+            <button class="suggestion-chip">Create a new agent</button>
+            <button class="suggestion-chip">Set up a provider</button>
+            <button class="suggestion-chip">Run a skill</button>
+            <button class="suggestion-chip">Explain agent teams</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Composer -->
+      <div class="composer">
+        <div class="composer-inner">
+          <div class="composer-input-wrapper">
+            <button class="composer-attach" title="Attach file">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <textarea class="composer-textarea" placeholder="Ask Artier Team anything, @ to add context, / for commands" rows="1"></textarea>
+            <button class="btn-send" disabled title="Send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+          <div class="composer-toolbar">
+            <div class="composer-toolbar-left">
+              <button class="composer-dropdown">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span class="dropdown-label">No Agent Team</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+            <div class="composer-toolbar-right">
+              <button class="composer-model-pill">
+                <span class="model-dot"></span>
+                <span>GPT-4o-mini</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>

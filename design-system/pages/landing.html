@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artier Team — Multi-Agent AI Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../base.css">
+  <link rel="stylesheet" href="../components/button.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+
+    /* ---- Animated BG ---- */
+    .landing-bg {
+      position: fixed; inset: 0; z-index: -1;
+      background: var(--color-bg-base);
+      overflow: hidden;
+    }
+    .landing-bg::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -20%;
+      width: 80vw; height: 80vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%);
+      animation: floatBlob 20s ease-in-out infinite;
+    }
+    .landing-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -30%; right: -10%;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%);
+      animation: floatBlob 25s ease-in-out infinite reverse;
+    }
+    @keyframes floatBlob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(5%, -8%) scale(1.05); }
+      66% { transform: translate(-3%, 5%) scale(0.95); }
+    }
+
+    /* ---- Navbar ---- */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      background: rgba(10, 10, 11, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: var(--space-3);
+      font-size: var(--font-size-lg); font-weight: var(--font-weight-bold);
+      color: var(--color-fg-primary); text-decoration: none;
+    }
+    .navbar-logo {
+      width: 32px; height: 32px; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--color-accent), #06b6d4);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 800; font-size: var(--font-size-md);
+    }
+    .navbar-links { display: flex; gap: var(--space-6); align-items: center; }
+    .navbar-links a {
+      font-size: var(--font-size-sm); color: var(--color-fg-muted);
+      text-decoration: none; transition: color var(--transition-fast);
+    }
+    .navbar-links a:hover { color: var(--color-fg-primary); }
+
+    /* ---- Hero ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px var(--space-6) 80px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-1) var(--space-3); margin-bottom: var(--space-6);
+      font-size: var(--font-size-xs); font-weight: var(--font-weight-medium);
+      color: var(--color-accent);
+      background: var(--color-accent-muted);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-5);
+      max-width: 800px;
+    }
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--color-accent) 0%, #06b6d4 50%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--color-fg-muted);
+      max-width: 560px;
+      margin-bottom: var(--space-8);
+      line-height: var(--line-height-relaxed);
+    }
+    .hero-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center; }
+    .hero-actions .btn-primary {
+      padding: var(--space-3) var(--space-6);
+      font-size: var(--font-size-md);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--color-accent), #06b6d4);
+      box-shadow: 0 4px 24px rgba(14,165,233,0.3);
+      transition: all var(--transition-fast);
+    }
+    .hero-actions .btn-primary:hover {
+      box-shadow: 0 6px 32px rgba(14,165,233,0.45);
+      transform: translateY(-1px);
+    }
+    .hero-actions .btn-secondary {
+      padding: var(--space-3) var(--space-6);
+      font-size: var(--font-size-md);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--color-fg-secondary);
+      backdrop-filter: blur(8px);
+    }
+    .hero-actions .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--color-fg-primary);
+    }
+
+    /* ---- Preview Card (hero mockup) ---- */
+    .hero-preview {
+      margin-top: var(--space-12);
+      width: 100%; max-width: 900px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--glass-border);
+      background: rgba(17,17,19,0.8);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+      overflow: hidden;
+    }
+    .preview-bar {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .preview-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .preview-dot.r { background: #ef4444; }
+    .preview-dot.y { background: #eab308; }
+    .preview-dot.g { background: #22c55e; }
+    .preview-body { display: flex; min-height: 360px; }
+    .preview-sidebar {
+      width: 200px; border-right: 1px solid rgba(255,255,255,0.04);
+      padding: var(--space-3); flex-shrink: 0;
+    }
+    .preview-sidebar-item {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-2); border-radius: var(--radius-sm);
+      font-size: 11px; color: var(--color-fg-muted); margin-bottom: 2px;
+    }
+    .preview-sidebar-item.active { background: var(--color-accent-muted); color: var(--color-accent); }
+    .preview-sidebar-item .dot {
+      width: 14px; height: 14px; border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.06); flex-shrink: 0;
+    }
+    .preview-sidebar-item.active .dot { background: rgba(14,165,233,0.2); }
+    .preview-main { flex: 1; display: flex; flex-direction: column; padding: var(--space-4); }
+    .preview-msg {
+      display: flex; gap: var(--space-2); margin-bottom: var(--space-3);
+    }
+    .preview-avatar {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 600;
+    }
+    .preview-avatar.user { background: rgba(255,255,255,0.1); color: var(--color-fg-muted); }
+    .preview-avatar.ai { background: var(--color-accent-muted); color: var(--color-accent); }
+    .preview-bubble {
+      padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+      font-size: 11px; line-height: 1.5; max-width: 80%;
+    }
+    .preview-bubble.user { background: rgba(255,255,255,0.06); color: var(--color-fg-secondary); }
+    .preview-bubble.ai { background: var(--color-accent-muted); color: var(--color-fg-primary); }
+    .preview-composer {
+      margin-top: auto; padding: var(--space-2) var(--space-3);
+      border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-md);
+      font-size: 11px; color: var(--color-fg-subtle);
+      display: flex; align-items: center; gap: var(--space-2);
+    }
+    .preview-composer-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-accent); animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* ---- Features Grid ---- */
+    .features {
+      padding: 100px var(--space-6);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .features-header {
+      text-align: center; margin-bottom: var(--space-12);
+    }
+    .features-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700; margin-bottom: var(--space-3);
+    }
+    .features-header p {
+      color: var(--color-fg-muted); max-width: 500px; margin: 0 auto;
+      font-size: var(--font-size-md);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-4);
+    }
+    .feature-card {
+      padding: var(--space-6);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-xl);
+      transition: all var(--transition-normal);
+      backdrop-filter: blur(8px);
+    }
+    .feature-card:hover {
+      border-color: var(--glass-border);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.08);
+    }
+    .feature-icon {
+      width: 40px; height: 40px; border-radius: var(--radius-lg);
+      background: var(--color-accent-muted);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-4);
+      color: var(--color-accent);
+    }
+    .feature-card h3 {
+      font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-2);
+    }
+    .feature-card p {
+      font-size: var(--font-size-sm); color: var(--color-fg-muted);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* ---- How it works ---- */
+    .how-it-works {
+      padding: 80px var(--space-6);
+      max-width: 800px; margin: 0 auto;
+    }
+    .how-it-works h2 {
+      text-align: center; font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700; margin-bottom: var(--space-10);
+    }
+    .steps { display: flex; flex-direction: column; gap: var(--space-8); }
+    .step {
+      display: flex; gap: var(--space-5); align-items: flex-start;
+    }
+    .step-number {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-accent), #06b6d4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--font-size-md); font-weight: 700; color: white;
+    }
+    .step-content h3 {
+      font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-1);
+    }
+    .step-content p { font-size: var(--font-size-sm); color: var(--color-fg-muted); line-height: 1.6; }
+
+    /* ---- Tech Stack ---- */
+    .tech-stack {
+      padding: 80px var(--space-6);
+      text-align: center;
+    }
+    .tech-stack h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: var(--space-6);
+    }
+    .tech-logos {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: var(--space-4); max-width: 700px; margin: 0 auto;
+    }
+    .tech-logo {
+      display: flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      font-size: var(--font-size-sm); color: var(--color-fg-secondary);
+    }
+    .tech-logo .logo-icon {
+      width: 20px; height: 20px; border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.08); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: var(--color-accent);
+    }
+
+    /* ---- CTA ---- */
+    .cta {
+      padding: 100px var(--space-6);
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 600px; margin: 0 auto;
+      padding: var(--space-10) var(--space-8);
+      background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(6,182,212,0.04) 100%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(16px);
+    }
+    .cta-box h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+    .cta-box p {
+      color: var(--color-fg-muted); margin-bottom: var(--space-6);
+      font-size: var(--font-size-md);
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      padding: var(--space-8) var(--space-6);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+      color: var(--color-fg-subtle);
+      font-size: var(--font-size-xs);
+    }
+
+    /* ---- Animations ---- */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-delay-1 { animation-delay: 0.1s; }
+    .fade-in-delay-2 { animation-delay: 0.2s; }
+    .fade-in-delay-3 { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <div class="landing-bg"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="navbar-logo">A</div>
+      Artier Team
+    </a>
+    <div class="navbar-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it Works</a>
+      <a href="pages/index.html" class="btn btn-primary btn-sm" style="border-radius:var(--radius-lg);">Open App</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge fade-in">
+      <span class="hero-badge-dot"></span>
+      Multi-Agent AI Platform
+    </div>
+    <h1 class="fade-in fade-in-delay-1">
+      Build Your Own<br><span class="gradient-text">AI Agent Team</span>
+    </h1>
+    <p class="fade-in fade-in-delay-2">
+      Create, orchestrate, and run AI agents that work together. From coding to research to automation — all self-hosted, provider-agnostic, fully customizable.
+    </p>
+    <div class="hero-actions fade-in fade-in-delay-3">
+      <a href="pages/index.html" class="btn btn-primary">
+        Get Started
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#features" class="btn btn-secondary">Learn More</a>
+    </div>
+
+    <!-- App Preview Mockup -->
+    <div class="hero-preview fade-in fade-in-delay-3">
+      <div class="preview-bar">
+        <div class="preview-dot r"></div>
+        <div class="preview-dot y"></div>
+        <div class="preview-dot g"></div>
+        <span style="margin-left:auto;font-size:11px;color:var(--color-fg-subtle);">Artier Team</span>
+      </div>
+      <div class="preview-body">
+        <div class="preview-sidebar">
+          <div class="preview-sidebar-item active"><div class="dot"></div>Agents</div>
+          <div class="preview-sidebar-item"><div class="dot"></div>Agent Teams</div>
+          <div class="preview-sidebar-item"><div class="dot"></div>Skills</div>
+          <div class="preview-sidebar-item"><div class="dot"></div>Automations</div>
+          <div style="border-top:1px solid rgba(255,255,255,0.04);margin:var(--space-3) 0;"></div>
+          <div class="preview-sidebar-item"><div class="dot"></div>Recent Chat</div>
+          <div class="preview-sidebar-item"><div class="dot"></div>Recent Task</div>
+        </div>
+        <div class="preview-main">
+          <div class="preview-msg">
+            <div class="preview-avatar user">Y</div>
+            <div class="preview-bubble user">Build a REST API for user management</div>
+          </div>
+          <div class="preview-msg">
+            <div class="preview-avatar ai">A</div>
+            <div class="preview-bubble ai">I'll delegate this to the Dev Team. Lead Developer will coordinate Frontend and Backend agents to build this API...</div>
+          </div>
+          <div class="preview-msg">
+            <div class="preview-avatar ai" style="background:var(--color-success-muted);color:var(--color-success);">T</div>
+            <div class="preview-bubble ai" style="background:var(--color-success-muted);">3 tests passed. API endpoint /api/users is ready.</div>
+          </div>
+          <div class="preview-composer">
+            <div class="preview-composer-dot"></div>
+            Ask Artier Team anything...
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="features-header">
+      <h2>Everything you need</h2>
+      <p>A complete platform for building and running AI agent teams, fully self-hosted.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Multi-Agent System</h3>
+        <p>Create standalone agents or teams with Lead + Sub Agent hierarchy. Each agent has its own model, instructions, and skills.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/></svg>
+        </div>
+        <h3>Multi-Provider</h3>
+        <p>Connect to OpenAI, Anthropic, or any compatible provider. Auto-detect models, BYOK, no vendor lock-in.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Agent Builder via Prompt</h3>
+        <p>Describe what you need in plain language. AI generates complete agent configs with instructions and model suggestions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>CLI Execution Sandbox</h3>
+        <p>Run terminal commands in isolated sandboxes. Agents can execute code, run tests, deploy — all safely sandboxed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Automation & Cron</h3>
+        <p>Schedule agents to run automatically. Daily reports, weekly digests, periodic checks — set it and forget it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Self-Hosted</h3>
+        <p>Deploy on your own infrastructure. Docker Compose on any VPS. Your data, your keys, your control.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="how-it-works" id="how-it-works">
+    <h2>How it Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Connect Your Providers</h3>
+          <p>Add your API keys from OpenAI, Anthropic, or any compatible provider. Models are auto-detected and ready to use.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Create Your Agents</h3>
+          <p>Build agents manually or let AI generate them from a prompt. Define skills, choose models, write instructions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Form a Team</h3>
+          <p>Group agents into teams with a Lead Agent coordinating Sub Agents. Each team has a slash command for easy access.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Start Building</h3>
+          <p>Chat with your agents, run skills, execute commands. Your AI team handles the rest — autonomously.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-stack">
+    <h2>Built With</h2>
+    <div class="tech-logos">
+      <div class="tech-logo"><div class="logo-icon">N</div>Next.js</div>
+      <div class="tech-logo"><div class="logo-icon">AI</div>AI SDK v7</div>
+      <div class="tech-logo"><div class="logo-icon">TS</div>TypeScript</div>
+      <div class="tech-logo"><div class="logo-icon">P</div>PostgreSQL</div>
+      <div class="tech-logo"><div class="logo-icon">D</div>Docker</div>
+      <div class="tech-logo"><div class="logo-icon">OS</div>OpenSandbox</div>
+      <div class="tech-logo"><div class="logo-icon">S</div>shadcn/ui</div>
+      <div class="tech-logo"><div class="logo-icon">T</div>Tailwind CSS</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-box">
+      <h2>Ready to build your AI team?</h2>
+      <p>Self-hosted, provider-agnostic, fully customizable. Start building today.</p>
+      <a href="pages/index.html" class="btn btn-primary" style="padding:var(--space-3) var(--space-8);font-size:var(--font-size-md);border-radius:var(--radius-lg);background:linear-gradient(135deg, var(--color-accent), #06b6d4);box-shadow:0 4px 24px rgba(14,165,233,0.3);">
+        Launch Artier Team
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Artier Team &mdash; Multi-Agent AI Platform by Yafira Digital Studio</p>
+  </footer>
+</body>
+</html>

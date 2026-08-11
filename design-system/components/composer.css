@@ -1,0 +1,156 @@
+/* ============================================
+   Composer Component
+   ============================================ */
+.composer {
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.composer-inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* PromptInput wrapper */
+.composer-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  background: var(--color-bg-overlay);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2) var(--space-3);
+  transition: border-color var(--transition-fast);
+}
+
+.composer-input-wrapper:focus-within {
+  border-color: var(--color-accent);
+}
+
+/* Attachment button */
+.composer-attach {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--color-fg-muted);
+  transition: all var(--transition-fast);
+}
+
+.composer-attach:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-fg-primary);
+}
+
+.composer-attach svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Textarea */
+.composer-textarea {
+  flex: 1;
+  min-height: 20px;
+  max-height: var(--composer-max-height);
+  resize: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  color: var(--color-fg-primary);
+  padding: var(--space-1) 0;
+  overflow-y: auto;
+}
+
+.composer-textarea::placeholder {
+  color: var(--color-fg-subtle);
+}
+
+/* Send button area */
+.composer-send {
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+/* Composer toolbar (bottom row) */
+.composer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.composer-toolbar-left,
+.composer-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Dropdown trigger (Agent Team / Manage Model) */
+.composer-dropdown {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-muted);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: transparent;
+}
+
+.composer-dropdown:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-fg-primary);
+  border-color: var(--color-border);
+}
+
+.composer-dropdown .dropdown-label {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.composer-dropdown svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.5;
+}
+
+/* Manage Model pill */
+.composer-model-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-fg-muted);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: transparent;
+}
+
+.composer-model-pill:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-fg-primary);
+}
+
+.composer-model-pill .model-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-success);
+}
